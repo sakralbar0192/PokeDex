@@ -1,0 +1,24 @@
+.PokemonsPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 1160px;
+}
+
+.pokemonPage__wrapper {
+    width: 100%;
+}
+
+.PokemonsPage__innerWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.PokemonsPage__pagination {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}

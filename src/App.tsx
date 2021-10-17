@@ -1,25 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import { BrowserRouter } from "react-router-dom";
+import { AppContext } from "./context/AppContext";
+import { IContext, IPokemonsItem } from "./interfaces/interfaces";
+import AppRouter from "./router/AppRouter";
+
 
 function App() {
+  const CARDS_PER_VIEW = 20;
+  const [pokemons, setPokemons] = useState<Array<IPokemonsItem>>([]);   
+  const [currentPage, setCurrentPage] = useState<number>(1)
+
+  const contextValue: IContext = {
+    pokemons: pokemons,
+    setPokemons: setPokemons,
+    currentPage: currentPage,
+    setCurrentPage: setCurrentPage,
+    cardsPerView: CARDS_PER_VIEW
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AppContext.Provider value={contextValue}>
+      <BrowserRouter>
+        <AppRouter />
+      </BrowserRouter>
+    </AppContext.Provider>
   );
 }
 
